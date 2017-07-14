@@ -36,7 +36,11 @@ check_colname_cap <- function(dt) {
     }
     
     # check variable
-    variable.name <- names(dt)[tolower(names(dt)) == "variable"]
+    
+    prop.names <- names(dt)
+    prop.names <- prop.names[-1]
+    
+    variable.name <- prop.names[ tolower(prop.names) == "variable"]
     
     if (length(variable.name) > 0 && variable.name != "variable") {
       setnames(dt, variable.name, "variable")
